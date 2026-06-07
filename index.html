@@ -16,6 +16,7 @@
       background: #080712;
       letter-spacing: 0;
     }
+    body.loaded .page { opacity: 1; transform: none; }
     a { color: inherit; text-decoration: none; }
     .page {
       min-height: 100vh;
@@ -24,6 +25,22 @@
         radial-gradient(circle at 82% 14%, rgba(82, 43, 187, .33), transparent 30%),
         linear-gradient(135deg, #080712 0%, #171027 52%, #05040b 100%);
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .7s ease, transform .7s ease;
+      position: relative;
+    }
+    .page:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, transparent 0 38%, rgba(255,255,255,.045) 42%, transparent 46%),
+        linear-gradient(20deg, transparent 0 62%, rgba(185,120,255,.08) 66%, transparent 72%);
+      background-size: 220% 220%, 180% 180%;
+      animation: auroraSweep 14s ease-in-out infinite alternate;
+      opacity: .9;
     }
     .shell { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
     .nav {
@@ -32,6 +49,7 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid rgba(255,255,255,.08);
+      animation: slideDown .65s ease both;
     }
     .brand { display: flex; align-items: center; gap: 12px; font-weight: 850; font-size: 20px; }
     .logo {
@@ -57,7 +75,9 @@
       color: #fff;
       font-weight: 750;
       box-shadow: 0 14px 34px rgba(129,70,242,.28);
+      transition: transform .18s ease, box-shadow .18s ease;
     }
+    .nav-download:hover { transform: translateY(-1px); box-shadow: 0 18px 42px rgba(129,70,242,.36); }
     .hero {
       min-height: calc(100vh - 76px);
       display: grid;
@@ -66,6 +86,7 @@
       gap: 54px;
       padding: 48px 0 70px;
     }
+    .hero > div { animation: heroCopy .8s .15s ease both; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -84,6 +105,7 @@
       border-radius: 50%;
       background: #b978ff;
       box-shadow: 0 0 0 7px rgba(185,120,255,.13);
+      animation: pulseDot 1.9s ease-in-out infinite;
     }
     h1 {
       margin: 22px 0 14px;
@@ -110,8 +132,20 @@
       color: #fff;
       font-weight: 850;
       box-shadow: 0 20px 46px rgba(129,70,242,.34);
+      position: relative;
+      overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease;
     }
-    .download:hover { transform: translateY(-1px); }
+    .download:before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 -70%;
+      width: 45%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.34), transparent);
+      transform: skewX(-18deg);
+      animation: buttonShine 3.8s ease-in-out infinite;
+    }
+    .download:hover { transform: translateY(-2px); box-shadow: 0 26px 58px rgba(129,70,242,.44); }
     .ghost {
       height: 52px;
       padding: 0 20px;
@@ -122,7 +156,9 @@
       background: rgba(255,255,255,.055);
       color: #f8f4ff;
       font-weight: 700;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
+    .ghost:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.24); background: rgba(255,255,255,.085); }
     .meta { margin-top: 18px; color: #afa1cf; font-size: 13px; }
     .product {
       position: relative;
@@ -134,6 +170,7 @@
       box-shadow: 0 34px 90px rgba(0,0,0,.36);
       padding: 20px;
       overflow: hidden;
+      animation: productFloat .9s .25s ease both, floatCard 5.8s 1.1s ease-in-out infinite;
     }
     .product:before {
       content: "";
@@ -166,6 +203,7 @@
       position: relative;
       background: transparent url("AltantivirusIcon.png") center center / contain no-repeat;
       box-shadow: 0 28px 70px rgba(129,70,242,.38), inset 0 -16px 26px rgba(31,12,87,.28);
+      animation: logoBreath 3.2s ease-in-out infinite;
     }
     .shield:before {
       content: none;
@@ -173,13 +211,31 @@
     .product h2 { margin: 0; text-align: center; font-size: 28px; }
     .product p { margin: 8px auto 22px; max-width: 320px; text-align: center; color: #cfc3e8; line-height: 1.5; }
     .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .scan-track {
+      height: 3px;
+      margin: 0 18px 22px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.10);
+      overflow: hidden;
+    }
+    .scan-track i {
+      display: block;
+      height: 100%;
+      width: 34%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #c184ff, #6f37e8, #c184ff);
+      animation: scanMove 2.2s ease-in-out infinite;
+      box-shadow: 0 0 18px rgba(185,120,255,.45);
+    }
     .mini {
       min-height: 82px;
       border-radius: 7px;
       padding: 13px;
       background: rgba(255,255,255,.055);
       border: 1px solid rgba(255,255,255,.08);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
+    .mini:hover, .feature:hover { transform: translateY(-3px); border-color: rgba(185,120,255,.32); background: rgba(255,255,255,.075); }
     .mini b { display: block; margin-bottom: 5px; font-size: 14px; }
     .mini span { color: #bfb2df; font-size: 12px; line-height: 1.45; }
     section { padding: 72px 0; }
@@ -197,6 +253,7 @@
       padding: 20px;
       background: rgba(255,255,255,.055);
       border: 1px solid rgba(255,255,255,.08);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
     .feature i {
       width: 34px;
@@ -221,7 +278,22 @@
         rgba(255,255,255,.065);
       border: 1px solid rgba(255,255,255,.10);
       box-shadow: 0 26px 70px rgba(0,0,0,.22);
+      position: relative;
+      overflow: hidden;
     }
+    .download-panel:before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -80px;
+      top: -100px;
+      border-radius: 50%;
+      background: rgba(185,120,255,.14);
+      filter: blur(6px);
+      animation: orbDrift 6s ease-in-out infinite alternate;
+    }
+    .download-panel > * { position: relative; z-index: 1; }
     .download-panel h2 { margin: 0 0 8px; font-size: 30px; }
     .download-panel p { margin: 0; color: #cfc3e8; line-height: 1.6; }
     .notes {
@@ -235,6 +307,34 @@
       border-top: 1px solid rgba(255,255,255,.08);
       color: #afa1cf;
       font-size: 13px;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+    .features .feature:nth-child(2) { transition-delay: .05s; }
+    .features .feature:nth-child(3) { transition-delay: .10s; }
+    .features .feature:nth-child(4) { transition-delay: .15s; }
+    .features .feature:nth-child(5) { transition-delay: .20s; }
+    .features .feature:nth-child(6) { transition-delay: .25s; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
+    @keyframes heroCopy { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @keyframes productFloat { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: none; } }
+    @keyframes floatCard { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes logoBreath { 0%,100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(185,120,255,0)); } 50% { transform: scale(1.035); filter: drop-shadow(0 0 20px rgba(185,120,255,.42)); } }
+    @keyframes pulseDot { 0%,100% { box-shadow: 0 0 0 7px rgba(185,120,255,.13); } 50% { box-shadow: 0 0 0 12px rgba(185,120,255,.05); } }
+    @keyframes buttonShine { 0%, 55% { left: -70%; } 78%, 100% { left: 130%; } }
+    @keyframes scanMove { 0% { transform: translateX(-105%); } 55% { transform: translateX(210%); } 100% { transform: translateX(210%); } }
+    @keyframes auroraSweep { from { background-position: 0% 0%, 80% 20%; } to { background-position: 100% 100%, 10% 90%; } }
+    @keyframes orbDrift { from { transform: translate(0, 0); } to { transform: translate(-24px, 18px); } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .page, .reveal, .hero > div, .product, .nav { opacity: 1 !important; transform: none !important; }
     }
     @media (max-width: 900px) {
       .nav-links a:not(.nav-download) { display: none; }
@@ -279,6 +379,7 @@
         <div class="shield"></div>
         <h2>Sistem korunuyor</h2>
         <p>Gercek zamanli koruma acikken indirilen dosyalar otomatik kontrol edilir.</p>
+        <div class="scan-track"><i></i></div>
         <div class="product-grid">
           <div class="mini"><b>Defender Destegi</b><span>Hizli, tam ve ozel taramalari Defender motoruna baglar.</span></div>
           <div class="mini"><b>Tepsi Koruma</b><span>Pencere kapansa bile arka planda calismaya devam eder.</span></div>
@@ -288,22 +389,22 @@
       </aside>
     </main>
 
-    <section id="features" class="shell">
-      <div class="section-title">
+    <section id="features" class="shell reveal">
+      <div class="section-title reveal">
         <h2>Temiz, sade ve kullanisli</h2>
         <p>Altantivirus, kullanicinin tek bakista guvenlik durumunu gormesi ve tarama baslatmasi icin tasarlandi.</p>
       </div>
       <div class="features">
-        <article class="feature"><i></i><h3>Gercek zamanli indirme kontrolu</h3><p>Downloads klasorunu izler, yeni dosya tamamlandiginda yerel kontrol ve Defender taramasi calistirir.</p></article>
-        <article class="feature"><i></i><h3>Animasyonlu tarama merkezi</h3><p>Hizli, tam bilgisayar, acilis ve ozel klasor taramalari icin akici ilerleme ekrani sunar.</p></article>
-        <article class="feature"><i></i><h3>Koyu ve beyaz tema</h3><p>Mor-siyah koyu tema ve mavi-beyaz acik tema arasinda animasyonlu gecis yapar.</p></article>
-        <article class="feature"><i></i><h3>Sistem tepsisi modu</h3><p>Program X ile kapatilsa bile koruma tepsi simgesinden calismaya devam eder.</p></article>
-        <article class="feature"><i></i><h3>Karantina ve bildirim</h3><p>Supheli dosyalari raporlar, yuksek riskli dosyalari karantinaya alir ve kullaniciya bildirim yollar.</p></article>
-        <article class="feature"><i></i><h3>Turkce ve English</h3><p>Ayarlar ekranindan dil secimi yapilabilir; arayuz iki dilde kullanilabilir.</p></article>
+        <article class="feature reveal"><i></i><h3>Gercek zamanli indirme kontrolu</h3><p>Downloads klasorunu izler, yeni dosya tamamlandiginda yerel kontrol ve Defender taramasi calistirir.</p></article>
+        <article class="feature reveal"><i></i><h3>Animasyonlu tarama merkezi</h3><p>Hizli, tam bilgisayar, acilis ve ozel klasor taramalari icin akici ilerleme ekrani sunar.</p></article>
+        <article class="feature reveal"><i></i><h3>Koyu ve beyaz tema</h3><p>Mor-siyah koyu tema ve mavi-beyaz acik tema arasinda animasyonlu gecis yapar.</p></article>
+        <article class="feature reveal"><i></i><h3>Sistem tepsisi modu</h3><p>Program X ile kapatilsa bile koruma tepsi simgesinden calismaya devam eder.</p></article>
+        <article class="feature reveal"><i></i><h3>Karantina ve bildirim</h3><p>Supheli dosyalari raporlar, yuksek riskli dosyalari karantinaya alir ve kullaniciya bildirim yollar.</p></article>
+        <article class="feature reveal"><i></i><h3>Turkce ve English</h3><p>Ayarlar ekranindan dil secimi yapilabilir; arayuz iki dilde kullanilabilir.</p></article>
       </div>
     </section>
 
-    <section id="download" class="shell">
+    <section id="download" class="shell reveal">
       <div class="download-panel">
         <div>
           <h2>Altantivirus'u hemen indir</h2>
@@ -324,5 +425,24 @@
       Altantivirus © 2026. Windows icin yerel guvenlik paneli ve Defender destekli tarama uygulamasi.
     </footer>
   </div>
+  <script>
+    (function () {
+      document.body.className += " loaded";
+      var items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        for (var i = 0; i < items.length; i++) items[i].className += " in";
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            entries[i].target.className += " in";
+            observer.unobserve(entries[i].target);
+          }
+        }
+      }, { threshold: 0.14 });
+      for (var j = 0; j < items.length; j++) observer.observe(items[j]);
+    })();
+  </script>
 </body>
 </html>
