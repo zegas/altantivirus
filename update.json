@@ -1,5 +1,5 @@
 {
-  "version": "1.2.1",
+  "version": "1.2.2",
   "url": "https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi",
-  "notes": "En guncel guvenli MSI paketi yayinlandi. Ilk acilis sozlesmesi, ayarlar duzeltmeleri ve temiz kurulum dosyalari eklendi."
+  "notes": "Klasik Windows kurulum sihirbazi eklendi. Welcome, lisans, kurulum klasoru ve Finish ekranlariyla daha profesyonel kurulum deneyimi sunulur."
 }
