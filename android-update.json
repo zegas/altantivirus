@@ -1,6 +1,6 @@
 {
-  "versionCode": 3,
-  "versionName": "0.3.0",
+  "versionCode": 4,
+  "versionName": "0.4.0",
   "apkUrl": "https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk",
-  "notes": "Uygulama ici guncelleme denetimi eklendi. Ayarlar ekranindan yeni surum kontrol edilebilir."
+  "notes": "Mobil uyumlu hamburger menulu arayuz eklendi. Basliklar soldan kayan menuye tasindi."
 }
