@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
-  "url": "https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip",
-  "notes": "Ilk acilista kullanici sozlesmesi, yonetici izni kontrolu, ayarlar scroll duzeltmesi ve uygulama ici yazilim guncelleyici eklendi."
+  "version": "1.2.1",
+  "url": "https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi",
+  "notes": "En guncel guvenli MSI paketi yayinlandi. Ilk acilis sozlesmesi, ayarlar duzeltmeleri ve temiz kurulum dosyalari eklendi."
 }
