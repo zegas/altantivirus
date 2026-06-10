@@ -125,6 +125,21 @@
       line-height: 1.65;
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-download-block {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+    }
+    .download-count-inline {
+      color: #a99ec2;
+      font-size: 15px;
+      line-height: 1;
+    }
+    .download-count-inline strong {
+      color: #f8f5ff;
+      font-weight: 850;
+    }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
@@ -224,40 +239,6 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .stat-card {
-      min-height: 132px;
-      padding: 20px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,.10);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.045));
-      box-shadow: 0 24px 60px rgba(0,0,0,.20);
-    }
-    .stat-card span {
-      display: block;
-      color: #bfb4d8;
-      font-size: 13px;
-      font-weight: 750;
-    }
-    .stat-card strong {
-      display: block;
-      margin-top: 12px;
-      font-size: 38px;
-      line-height: 1;
-    }
-    .stat-card em {
-      display: block;
-      margin-top: 10px;
-      color: #a99ec2;
-      font-size: 12px;
-      font-style: normal;
-      line-height: 1.5;
-    }
     .trust-card { padding: 20px; }
     .trust-card b { display: block; margin-bottom: 8px; font-size: 18px; }
     .trust-card span { color: #cfc5e8; line-height: 1.58; font-size: 14px; }
@@ -307,13 +288,13 @@
         opacity: .20;
       }
       .hero-content { padding-top: 280px; }
-      .platforms, .features, .trust-grid, .stats-grid, .download-panel { grid-template-columns: 1fr; }
+      .platforms, .features, .trust-grid, .download-panel { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .shell { width: min(100% - 26px, 1180px); }
       .brand span:last-child { display: none; }
       .hero-content { padding-bottom: 58px; }
-      .hero-actions a { width: 100%; }
+      .hero-actions a, .hero-download-block { width: 100%; }
       .platform-card { min-height: 0; }
       section { padding: 58px 0; }
     }
@@ -346,7 +327,10 @@
         <h1>Altantivirus</h1>
         <p class="lead">Mor-siyah premium tema, Windows Defender destekli tarama, Android uygulama denetimi ve sade bir indirme deneyimi. Tek marka, iki platform.</p>
         <div class="hero-actions">
-          <a class="btn-primary" href="#download">Hemen indir</a>
+          <div class="hero-download-block">
+            <a class="btn-primary" href="#download">Hemen indir</a>
+            <span class="download-count-inline"><strong id="countTotalHero">-</strong> Downloads</span>
+          </div>
           <a class="btn-secondary" href="#platforms">Surumleri incele</a>
         </div>
         <div class="hero-meta">
@@ -392,19 +376,6 @@
             <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/android-update.json">Surum bilgisi</a>
           </div>
         </article>
-      </div>
-    </section>
-
-    <section id="stats" class="shell reveal">
-      <div class="section-head">
-        <h2>Indirme istatistikleri</h2>
-        <p>Site uzerinden baslatilan indirmeler public sayaÃ§la takip edilir. Degerler anlik olarak yuklenir ve yeni indirmelerde artar.</p>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card"><span>Toplam indirme</span><strong id="countTotal">-</strong><em>Windows, Android ve portable toplami.</em></div>
-        <div class="stat-card"><span>Windows MSI</span><strong id="countWindows">-</strong><em>Kurulum paketine tiklama sayisi.</em></div>
-        <div class="stat-card"><span>Android APK</span><strong id="countAndroid">-</strong><em>Mobil uygulama indirme sayisi.</em></div>
-        <div class="stat-card"><span>Portable ZIP</span><strong id="countPortable">-</strong><em>Kurulumsuz paket indirme sayisi.</em></div>
       </div>
     </section>
 
@@ -479,7 +450,7 @@
         portable: "portable"
       };
       var ids = {
-        total: "countTotal",
+        total: "countTotalHero",
         windows: "countWindows",
         android: "countAndroid",
         portable: "countPortable"
