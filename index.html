@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="tr">
 <head>
   <meta charset="utf-8">
@@ -12,426 +12,382 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Arial, sans-serif;
-      color: #f8f4ff;
-      background: #080712;
+      color: #f8f5ff;
+      background: #070610;
       letter-spacing: 0;
     }
-    body.loaded .page { opacity: 1; transform: none; }
     a { color: inherit; text-decoration: none; }
-    .page {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 18% 7%, rgba(185, 120, 255, .32), transparent 28%),
-        radial-gradient(circle at 82% 14%, rgba(82, 43, 187, .33), transparent 30%),
-        linear-gradient(135deg, #080712 0%, #171027 52%, #05040b 100%);
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity .7s ease, transform .7s ease;
-      position: relative;
-    }
-    .page:before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(115deg, transparent 0 38%, rgba(255,255,255,.045) 42%, transparent 46%),
-        linear-gradient(20deg, transparent 0 62%, rgba(185,120,255,.08) 66%, transparent 72%);
-      background-size: 220% 220%, 180% 180%;
-      animation: auroraSweep 14s ease-in-out infinite alternate;
-      opacity: .9;
-    }
-    .shell { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+    .page { min-height: 100vh; background: #070610; }
     .nav {
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      right: 0;
+      top: 0;
       height: 76px;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 6, 16, .78);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      animation: slideDown .65s ease both;
     }
     .brand { display: flex; align-items: center; gap: 12px; font-weight: 850; font-size: 20px; }
     .logo {
       width: 42px;
       height: 42px;
-      border-radius: 13px;
-      position: relative;
-      background: transparent url("AltantivirusIcon.png") center center / contain no-repeat;
-      box-shadow: 0 18px 44px rgba(129,70,242,.32);
+      border-radius: 12px;
+      background: url("AltantivirusIcon.png") center / contain no-repeat;
+      box-shadow: 0 16px 34px rgba(139,92,246,.28);
     }
-    .logo:before {
-      content: none;
-    }
-    .nav-links { display: flex; align-items: center; gap: 22px; color: #cfc3e8; font-size: 14px; }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: #d8d0ea; font-size: 14px; }
     .nav-links a:hover { color: #fff; }
-    .nav-download {
-      height: 38px;
-      padding: 0 15px;
-      display: inline-flex;
-      align-items: center;
-      border-radius: 7px;
-      background: linear-gradient(135deg, #b978ff, #6f37e8);
-      color: #fff;
-      font-weight: 750;
-      box-shadow: 0 14px 34px rgba(129,70,242,.28);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .nav-download:hover { transform: translateY(-1px); box-shadow: 0 18px 42px rgba(129,70,242,.36); }
-    .hero {
-      min-height: calc(100vh - 76px);
-      display: grid;
-      grid-template-columns: 1fr 470px;
-      align-items: center;
-      gap: 54px;
-      padding: 48px 0 70px;
-    }
-    .hero > div { animation: heroCopy .8s .15s ease both; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      min-height: 34px;
-      padding: 0 12px;
-      border-radius: 999px;
-      color: #efe7ff;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.10);
-      font-size: 13px;
-    }
-    .eyebrow i {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #b978ff;
-      box-shadow: 0 0 0 7px rgba(185,120,255,.13);
-      animation: pulseDot 1.9s ease-in-out infinite;
-    }
-    h1 {
-      margin: 22px 0 14px;
-      font-size: clamp(46px, 7vw, 78px);
-      line-height: .94;
-      letter-spacing: 0;
-    }
-    .lead {
-      max-width: 660px;
-      margin: 0;
-      color: #d5c9ee;
-      font-size: 18px;
-      line-height: 1.65;
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
-    .download {
-      height: 52px;
-      padding: 0 24px;
+    .nav-cta, .btn-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 7px;
-      background: linear-gradient(135deg, #c184ff, #6f37e8);
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #b984ff, #7138e8);
       color: #fff;
-      font-weight: 850;
-      box-shadow: 0 20px 46px rgba(129,70,242,.34);
-      position: relative;
-      overflow: hidden;
+      font-weight: 800;
+      box-shadow: 0 16px 36px rgba(113,56,232,.30);
       transition: transform .18s ease, box-shadow .18s ease;
     }
-    .download:before {
+    .nav-cta:hover, .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 48px rgba(113,56,232,.40); }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(7,6,16,.98) 0%, rgba(7,6,16,.84) 42%, rgba(7,6,16,.48) 100%),
+        url("AltantivirusLogo.png") right center / min(760px, 76vw) auto no-repeat,
+        #080711;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .hero:after {
       content: "";
       position: absolute;
-      inset: 0 auto 0 -70%;
-      width: 45%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.34), transparent);
-      transform: skewX(-18deg);
-      animation: buttonShine 3.8s ease-in-out infinite;
+      inset: auto 0 0;
+      height: 210px;
+      background: linear-gradient(0deg, #070610 0%, rgba(7,6,16,0) 100%);
+      pointer-events: none;
     }
-    .download:hover { transform: translateY(-2px); box-shadow: 0 26px 58px rgba(129,70,242,.44); }
-    .ghost {
-      height: 52px;
-      padding: 0 20px;
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(780px, 100%);
+      padding: 132px 0 84px;
+    }
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      border-radius: 7px;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.055);
-      color: #f8f4ff;
+      background: rgba(255,255,255,.06);
+      color: #e9ddff;
+      font-size: 13px;
       font-weight: 700;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
-    .ghost:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.24); background: rgba(255,255,255,.085); }
-    .meta { margin-top: 18px; color: #afa1cf; font-size: 13px; }
-    .product {
-      position: relative;
-      min-height: 430px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.09);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
-      box-shadow: 0 34px 90px rgba(0,0,0,.36);
-      padding: 20px;
-      overflow: hidden;
-      animation: productFloat .9s .25s ease both, floatCard 5.8s 1.1s ease-in-out infinite;
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: .92;
+      letter-spacing: 0;
     }
-    .product:before {
-      content: "";
-      position: absolute;
-      inset: -80px -100px auto auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(185,120,255,.20);
-      filter: blur(18px);
+    .lead {
+      max-width: 680px;
+      margin: 0;
+      color: #d8d0ea;
+      font-size: 19px;
+      line-height: 1.65;
     }
-    .windowbar {
-      height: 38px;
-      display: flex;
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn-secondary {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      color: #bfb2df;
-      font-size: 12px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      margin: -4px -4px 22px;
-      padding: 0 4px 14px;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      font-weight: 750;
+      transition: transform .18s ease, background .18s ease;
     }
-    .dots { display: flex; gap: 7px; }
-    .dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.18); }
-    .shield {
-      width: 150px;
-      height: 150px;
-      margin: 30px auto 18px;
-      border-radius: 50%;
-      position: relative;
-      background: transparent url("AltantivirusIcon.png") center center / contain no-repeat;
-      box-shadow: 0 28px 70px rgba(129,70,242,.38), inset 0 -16px 26px rgba(31,12,87,.28);
-      animation: logoBreath 3.2s ease-in-out infinite;
+    .btn-secondary:hover { transform: translateY(-2px); background: rgba(255,255,255,.10); }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
     }
-    .shield:before {
-      content: none;
-    }
-    .product h2 { margin: 0; text-align: center; font-size: 28px; }
-    .product p { margin: 8px auto 22px; max-width: 320px; text-align: center; color: #cfc3e8; line-height: 1.5; }
-    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .scan-track {
-      height: 3px;
-      margin: 0 18px 22px;
-      border-radius: 99px;
-      background: rgba(255,255,255,.10);
-      overflow: hidden;
-    }
-    .scan-track i {
-      display: block;
-      height: 100%;
-      width: 34%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #c184ff, #6f37e8, #c184ff);
-      animation: scanMove 2.2s ease-in-out infinite;
-      box-shadow: 0 0 18px rgba(185,120,255,.45);
-    }
-    .mini {
-      min-height: 82px;
-      border-radius: 7px;
-      padding: 13px;
-      background: rgba(255,255,255,.055);
+    .meta-pill {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      color: #cfc5e8;
+      font-size: 13px;
       border: 1px solid rgba(255,255,255,.08);
+    }
+    section { padding: 78px 0; }
+    .section-head { max-width: 760px; margin-bottom: 28px; }
+    .section-head h2 { margin: 0 0 10px; font-size: clamp(30px, 4vw, 44px); }
+    .section-head p { margin: 0; color: #cfc5e8; line-height: 1.65; }
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .platform-card, .feature, .trust-card {
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.055);
+      box-shadow: 0 24px 60px rgba(0,0,0,.22);
+    }
+    .platform-card {
+      min-height: 270px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
-    .mini:hover, .feature:hover { transform: translateY(-3px); border-color: rgba(185,120,255,.32); background: rgba(255,255,255,.075); }
-    .mini b { display: block; margin-bottom: 5px; font-size: 14px; }
-    .mini span { color: #bfb2df; font-size: 12px; line-height: 1.45; }
-    section { padding: 72px 0; }
-    .section-title { max-width: 720px; margin-bottom: 26px; }
-    .section-title h2 { margin: 0 0 10px; font-size: 34px; }
-    .section-title p { margin: 0; color: #cfc3e8; line-height: 1.6; }
+    .platform-card:hover, .feature:hover, .trust-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(185,132,255,.32);
+      background: rgba(255,255,255,.075);
+    }
+    .platform-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .platform-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #b984ff, #7138e8);
+      color: #fff;
+      font-weight: 900;
+      font-size: 20px;
+    }
+    .badge {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(67,221,163,.12);
+      color: #85f0c9;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .platform-card h3 { margin: 22px 0 10px; font-size: 26px; }
+    .platform-card p { margin: 0; color: #cfc5e8; line-height: 1.62; }
+    .platform-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
     .features {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
-    .feature {
-      min-height: 170px;
-      border-radius: 8px;
-      padding: 20px;
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.08);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-    .feature i {
+    .feature { min-height: 170px; padding: 22px; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .feature-mark {
       width: 34px;
       height: 34px;
-      display: block;
-      border-radius: 9px;
+      border-radius: 8px;
       margin-bottom: 16px;
-      background: linear-gradient(145deg, #c184ff, #6f37e8);
-      box-shadow: 0 12px 24px rgba(129,70,242,.24);
+      background: linear-gradient(135deg, #b984ff, #7138e8);
     }
     .feature h3 { margin: 0 0 8px; font-size: 18px; }
-    .feature p { margin: 0; color: #cfc3e8; line-height: 1.55; font-size: 14px; }
+    .feature p { margin: 0; color: #cfc5e8; line-height: 1.58; font-size: 14px; }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .trust-card { padding: 20px; }
+    .trust-card b { display: block; margin-bottom: 8px; font-size: 18px; }
+    .trust-card span { color: #cfc5e8; line-height: 1.58; font-size: 14px; }
+    .download-band {
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: #0d0919;
+    }
     .download-panel {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 26px;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
       align-items: center;
-      border-radius: 10px;
-      padding: 30px;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(185,120,255,.18), transparent 26%),
-        rgba(255,255,255,.065);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 26px 70px rgba(0,0,0,.22);
-      position: relative;
-      overflow: hidden;
     }
-    .download-panel:before {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      right: -80px;
-      top: -100px;
-      border-radius: 50%;
-      background: rgba(185,120,255,.14);
-      filter: blur(6px);
-      animation: orbDrift 6s ease-in-out infinite alternate;
-    }
-    .download-panel > * { position: relative; z-index: 1; }
-    .download-panel h2 { margin: 0 0 8px; font-size: 30px; }
-    .download-panel p { margin: 0; color: #cfc3e8; line-height: 1.6; }
-    .notes {
-      margin-top: 16px;
-      color: #afa1cf;
+    .download-panel h2 { margin: 0 0 10px; font-size: clamp(32px, 5vw, 54px); }
+    .download-panel p { margin: 0; color: #d8d0ea; line-height: 1.65; }
+    .download-stack { display: grid; gap: 10px; }
+    .download-stack a { width: 100%; }
+    .note {
+      margin-top: 14px;
+      color: #a99ec2;
       font-size: 13px;
       line-height: 1.6;
     }
     footer {
-      padding: 30px 0 46px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      color: #afa1cf;
+      padding: 34px 0 46px;
+      color: #a99ec2;
       font-size: 13px;
     }
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .65s ease, transform .65s ease;
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (max-width: 920px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero {
+        align-items: flex-end;
+        background:
+          linear-gradient(0deg, rgba(7,6,16,.98) 0%, rgba(7,6,16,.75) 100%),
+          url("AltantivirusLogo.png") center 105px / min(520px, 92vw) auto no-repeat,
+          #080711;
+      }
+      .hero-content { padding-top: 280px; }
+      .platforms, .features, .trust-grid, .download-panel { grid-template-columns: 1fr; }
     }
-    .reveal.in {
-      opacity: 1;
-      transform: none;
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 26px, 1180px); }
+      .brand span:last-child { display: none; }
+      .hero-content { padding-bottom: 58px; }
+      .hero-actions a { width: 100%; }
+      .platform-card { min-height: 0; }
+      section { padding: 58px 0; }
     }
-    .features .feature:nth-child(2) { transition-delay: .05s; }
-    .features .feature:nth-child(3) { transition-delay: .10s; }
-    .features .feature:nth-child(4) { transition-delay: .15s; }
-    .features .feature:nth-child(5) { transition-delay: .20s; }
-    .features .feature:nth-child(6) { transition-delay: .25s; }
-    @keyframes slideDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
-    @keyframes heroCopy { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-    @keyframes productFloat { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: none; } }
-    @keyframes floatCard { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    @keyframes logoBreath { 0%,100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(185,120,255,0)); } 50% { transform: scale(1.035); filter: drop-shadow(0 0 20px rgba(185,120,255,.42)); } }
-    @keyframes pulseDot { 0%,100% { box-shadow: 0 0 0 7px rgba(185,120,255,.13); } 50% { box-shadow: 0 0 0 12px rgba(185,120,255,.05); } }
-    @keyframes buttonShine { 0%, 55% { left: -70%; } 78%, 100% { left: 130%; } }
-    @keyframes scanMove { 0% { transform: translateX(-105%); } 55% { transform: translateX(210%); } 100% { transform: translateX(210%); } }
-    @keyframes auroraSweep { from { background-position: 0% 0%, 80% 20%; } to { background-position: 100% 100%, 10% 90%; } }
-    @keyframes orbDrift { from { transform: translate(0, 0); } to { transform: translate(-24px, 18px); } }
     @media (prefers-reduced-motion: reduce) {
       *, *:before, *:after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-      .page, .reveal, .hero > div, .product, .nav { opacity: 1 !important; transform: none !important; }
-    }
-    @media (max-width: 900px) {
-      .nav-links a:not(.nav-download) { display: none; }
-      .hero { grid-template-columns: 1fr; padding-top: 34px; }
-      .product { min-height: auto; }
-      .features { grid-template-columns: 1fr; }
-      .download-panel { grid-template-columns: 1fr; }
+      .reveal { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="shell nav">
-      <a class="brand" href="#">
-        <span class="logo"></span>
-        <span>Altantivirus</span>
-      </a>
-      <nav class="nav-links">
-        <a href="#features">Ozellikler</a>
-        <a href="#download">Indir</a>
-        <a class="nav-download" href="#download">Indir</a>
-      </nav>
+    <header class="nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="#">
+          <span class="logo"></span>
+          <span>Altantivirus</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#platforms">Surumler</a>
+          <a href="#features">Ozellikler</a>
+          <a href="#trust">Guven</a>
+          <a class="nav-cta" href="#download">Indir</a>
+        </nav>
+      </div>
     </header>
 
-    <main class="shell hero">
-      <div>
-        <div class="eyebrow"><i></i> Windows ve Android icin modern guvenlik paneli</div>
+    <main class="hero">
+      <div class="shell hero-content">
+        <div class="eyebrow">Windows ve Android icin modern guvenlik paneli</div>
         <h1>Altantivirus</h1>
-        <p class="lead">Mor-siyah premium arayuz, sistem tepsisi korumasi, indirme kontrolu, karantina ve Microsoft Defender motoruyla desteklenen tarama deneyimi.</p>
+        <p class="lead">Mor-siyah premium tema, Windows Defender destekli tarama, Android uygulama denetimi ve sade bir indirme deneyimi. Tek marka, iki platform.</p>
         <div class="hero-actions">
-          <a class="download" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi">Altantivirus'u indir</a>
-          <a class="ghost" href="#features">Ozellikleri gor</a>
+          <a class="btn-primary" href="#download">Hemen indir</a>
+          <a class="btn-secondary" href="#platforms">Surumleri incele</a>
         </div>
-        <div class="meta">Windows 10/11 ve Android icin indirme paketleri hazir.</div>
+        <div class="hero-meta">
+          <span class="meta-pill">Windows 10/11</span>
+          <span class="meta-pill">Android APK 0.9.0</span>
+          <span class="meta-pill">Turkce arayuz</span>
+          <span class="meta-pill">Uygulama ici guncelleme</span>
+        </div>
       </div>
-
-      <aside class="product" aria-label="Altantivirus arayuz onizleme">
-        <div class="windowbar">
-          <span>Altantivirus Premium Security</span>
-          <span class="dots"><span></span><span></span><span></span></span>
-        </div>
-        <div class="shield"></div>
-        <h2>Sistem korunuyor</h2>
-        <p>Gercek zamanli koruma acikken indirilen dosyalar otomatik kontrol edilir.</p>
-        <div class="scan-track"><i></i></div>
-        <div class="product-grid">
-          <div class="mini"><b>Defender Destegi</b><span>Hizli, tam ve ozel taramalari Defender motoruna baglar.</span></div>
-          <div class="mini"><b>Tepsi Koruma</b><span>Pencere kapansa bile arka planda calismaya devam eder.</span></div>
-          <div class="mini"><b>Karantina</b><span>Yuksek riskli dosyalari guvenli alana tasir.</span></div>
-          <div class="mini"><b>Bildirimler</b><span>Supheli indirmelerde Windows bildirimi gosterir.</span></div>
-        </div>
-      </aside>
     </main>
 
-    <section id="features" class="shell reveal">
-      <div class="section-title reveal">
-        <h2>Temiz, sade ve kullanisli</h2>
-        <p>Altantivirus, kullanicinin tek bakista guvenlik durumunu gormesi ve tarama baslatmasi icin tasarlandi.</p>
+    <section id="platforms" class="shell reveal">
+      <div class="section-head">
+        <h2>Platformunu sec</h2>
+        <p>Windows surumu masaustu guvenlik paneli olarak, Android surumu mobil uygulama ve izin denetimi olarak hazirlandi.</p>
       </div>
-      <div class="features">
-        <article class="feature reveal"><i></i><h3>Gercek zamanli indirme kontrolu</h3><p>Downloads klasorunu izler, yeni dosya tamamlandiginda yerel kontrol ve Defender taramasi calistirir.</p></article>
-        <article class="feature reveal"><i></i><h3>Animasyonlu tarama merkezi</h3><p>Hizli, tam bilgisayar, acilis ve ozel klasor taramalari icin akici ilerleme ekrani sunar.</p></article>
-        <article class="feature reveal"><i></i><h3>Koyu ve beyaz tema</h3><p>Mor-siyah koyu tema ve mavi-beyaz acik tema arasinda animasyonlu gecis yapar.</p></article>
-        <article class="feature reveal"><i></i><h3>Sistem tepsisi modu</h3><p>Program X ile kapatilsa bile koruma tepsi simgesinden calismaya devam eder.</p></article>
-        <article class="feature reveal"><i></i><h3>Karantina ve bildirim</h3><p>Supheli dosyalari raporlar, yuksek riskli dosyalari karantinaya alir ve kullaniciya bildirim yollar.</p></article>
-        <article class="feature reveal"><i></i><h3>Turkce ve English</h3><p>Ayarlar ekranindan dil secimi yapilabilir; arayuz iki dilde kullanilabilir.</p></article>
+      <div class="platforms">
+        <article class="platform-card">
+          <div>
+            <div class="platform-top">
+              <div class="platform-icon">W</div>
+              <span class="badge">MSI kurulum</span>
+            </div>
+            <h3>Windows Security</h3>
+            <p>Sistem tepsisi modu, indirme kontrolu, karantina, Microsoft Defender destekli hizli/tam/ozel tarama ve guncelleme denetimi.</p>
+          </div>
+          <div class="platform-actions">
+            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi">Windows MSI indir</a>
+            <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip">Portable</a>
+          </div>
+        </article>
+        <article class="platform-card">
+          <div>
+            <div class="platform-top">
+              <div class="platform-icon">A</div>
+              <span class="badge">0.9.0</span>
+            </div>
+            <h3>Android Mobile</h3>
+            <p>Buyuk TARA butonu, durum seridi, son tarama bilgisi, islevli kutular, izin analizi ve uygulama ici guncelleme kontrolu.</p>
+          </div>
+          <div class="platform-actions">
+            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk">Android APK indir</a>
+            <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/android-update.json">Surum bilgisi</a>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="download" class="shell reveal">
-      <div class="download-panel">
+    <section id="features" class="shell reveal">
+      <div class="section-head">
+        <h2>Daha sade, daha okunur</h2>
+        <p>Arayuz; hizli tarama baslatma, durum okuma ve dogru indirme dosyasina ulasma etrafinda sade tutuldu.</p>
+      </div>
+      <div class="features">
+        <article class="feature"><div class="feature-mark"></div><h3>Gercek zamanli kontrol</h3><p>Windows surumu Downloads klasorunu izler ve yeni dosyalari Defender motoruyla kontrol etmeye calisir.</p></article>
+        <article class="feature"><div class="feature-mark"></div><h3>Mobil izin analizi</h3><p>Android surumu yuklu uygulamalardaki hassas izinleri inceler ve guvenlik skorunu gunceller.</p></article>
+        <article class="feature"><div class="feature-mark"></div><h3>Guncelleme denetimi</h3><p>Windows ve Android icin GitHub uzerinden surum bilgisi kontrol edilebilir.</p></article>
+        <article class="feature"><div class="feature-mark"></div><h3>Karantina akisi</h3><p>Supheli dosyalar ve riskli uygulama bilgileri kullaniciya sade raporlarla gosterilir.</p></article>
+        <article class="feature"><div class="feature-mark"></div><h3>Profesyonel tema</h3><p>Altantivirus markasina uygun mor/siyah tema, net butonlar ve mobil uyumlu yerlesim.</p></article>
+        <article class="feature"><div class="feature-mark"></div><h3>Kolay dagitim</h3><p>Site uzerinden MSI, portable ZIP ve Android APK dosyalarina dogrudan ulasilabilir.</p></article>
+      </div>
+    </section>
+
+    <section id="trust" class="shell reveal">
+      <div class="section-head">
+        <h2>Net ve durust guvenlik</h2>
+        <p>Altantivirus profesyonel gorunumlu bir guvenlik panelidir. Ticari antivirus seviyesine cikmak icin kod imzalama, resmi testler ve bulut imza altyapisi gerekir.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card"><b>Windows</b><span>Defender motoru bulunan sistemlerde tarama komutlarini destekleyici olarak kullanir.</span></div>
+        <div class="trust-card"><b>Android</b><span>Android izin modeli nedeniyle tum telefonu sinirsiz tarayamaz; uygulama ve izin denetimine odaklanir.</span></div>
+        <div class="trust-card"><b>Yayin</b><span>Daha az uyari icin ileride kod imzalama sertifikasi ve release imzali Android build gerekir.</span></div>
+      </div>
+    </section>
+
+    <section id="download" class="download-band reveal">
+      <div class="shell download-panel">
         <div>
-          <h2>Altantivirus'u hemen indir</h2>
-          <p><strong>Windows</strong> icin MSI kurulum paketini, <strong>Android</strong> icin Altantivirus Mobile 0.9.0 APK dosyasini indirebilirsin. Android surumunde profesyonel durum seridi, buyuk TARA butonu, islevli kutular ve uygulama ici guncelleme vardir.</p>
-          <div class="notes">Not: Android telefonda APK kurulumu icin "bilinmeyen uygulama" izni isteyebilir; bu Android'in normal dis kaynak kurulumu guvenlik adimidir.</div>
+          <h2>Altantivirus'u indir</h2>
+          <p>En guncel Windows ve Android paketleri buradan indirilebilir. Android telefonda APK kurulumu icin bilinmeyen uygulama izni gerekebilir.</p>
+          <div class="note">Windows MSI standart kurulum dosyasidir. Android APK debug imzali gelistirme surumudur; yayin icin release imzasi onerilir.</div>
         </div>
-        <div>
-          <a class="download" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi">Setup MSI indir</a>
-          <div style="height:10px"></div>
-          <a class="download" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk">Android APK 0.9.0 indir</a>
-          <div style="height:10px"></div>
-          <a class="ghost" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip">Portable indir</a>
-          <div style="height:10px"></div>
-          <a class="ghost" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi">Setup EXE tarzi kurulum</a>
-          <div style="height:10px"></div>
-          <a class="ghost" href="https://github.com/zegas/altantivirus">GitHub sayfasi</a>
+        <div class="download-stack">
+          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi">Windows MSI indir</a>
+          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk">Android APK 0.9.0 indir</a>
+          <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip">Portable indir</a>
         </div>
       </div>
     </section>
 
     <footer class="shell">
-      Altantivirus © 2026. Windows ve Android icin yerel guvenlik paneli ve tarama uygulamasi.
+      Altantivirus Â© 2026. Windows ve Android icin yerel guvenlik paneli ve tarama uygulamasi.
     </footer>
   </div>
   <script>
     (function () {
-      document.body.className += " loaded";
       var items = document.querySelectorAll(".reveal");
       if (!("IntersectionObserver" in window)) {
         for (var i = 0; i < items.length; i++) items[i].className += " in";
@@ -450,3 +406,4 @@
   </script>
 </body>
 </html>
+
