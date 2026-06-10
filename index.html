@@ -211,6 +211,40 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .stat-card {
+      min-height: 132px;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.045));
+      box-shadow: 0 24px 60px rgba(0,0,0,.20);
+    }
+    .stat-card span {
+      display: block;
+      color: #bfb4d8;
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .stat-card strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 38px;
+      line-height: 1;
+    }
+    .stat-card em {
+      display: block;
+      margin-top: 10px;
+      color: #a99ec2;
+      font-size: 12px;
+      font-style: normal;
+      line-height: 1.5;
+    }
     .trust-card { padding: 20px; }
     .trust-card b { display: block; margin-bottom: 8px; font-size: 18px; }
     .trust-card span { color: #cfc5e8; line-height: 1.58; font-size: 14px; }
@@ -252,7 +286,7 @@
           #080711;
       }
       .hero-content { padding-top: 280px; }
-      .platforms, .features, .trust-grid, .download-panel { grid-template-columns: 1fr; }
+      .platforms, .features, .trust-grid, .stats-grid, .download-panel { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .shell { width: min(100% - 26px, 1180px); }
@@ -319,8 +353,8 @@
             <p>Sistem tepsisi modu, indirme kontrolu, karantina, Microsoft Defender destekli hizli/tam/ozel tarama ve guncelleme denetimi.</p>
           </div>
           <div class="platform-actions">
-            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi">Windows MSI indir</a>
-            <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip">Portable</a>
+            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" data-download="windows">Windows MSI indir</a>
+            <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" data-download="portable">Portable</a>
           </div>
         </article>
         <article class="platform-card">
@@ -333,10 +367,23 @@
             <p>Buyuk TARA butonu, durum seridi, son tarama bilgisi, islevli kutular, izin analizi ve uygulama ici guncelleme kontrolu.</p>
           </div>
           <div class="platform-actions">
-            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk">Android APK indir</a>
+            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" data-download="android">Android APK indir</a>
             <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/android-update.json">Surum bilgisi</a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section id="stats" class="shell reveal">
+      <div class="section-head">
+        <h2>Indirme istatistikleri</h2>
+        <p>Site uzerinden baslatilan indirmeler public sayaÃ§la takip edilir. Degerler anlik olarak yuklenir ve yeni indirmelerde artar.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><span>Toplam indirme</span><strong id="countTotal">-</strong><em>Windows, Android ve portable toplami.</em></div>
+        <div class="stat-card"><span>Windows MSI</span><strong id="countWindows">-</strong><em>Kurulum paketine tiklama sayisi.</em></div>
+        <div class="stat-card"><span>Android APK</span><strong id="countAndroid">-</strong><em>Mobil uygulama indirme sayisi.</em></div>
+        <div class="stat-card"><span>Portable ZIP</span><strong id="countPortable">-</strong><em>Kurulumsuz paket indirme sayisi.</em></div>
       </div>
     </section>
 
@@ -375,9 +422,9 @@
           <div class="note">Windows MSI standart kurulum dosyasidir. Android APK debug imzali gelistirme surumudur; yayin icin release imzasi onerilir.</div>
         </div>
         <div class="download-stack">
-          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi">Windows MSI indir</a>
-          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk">Android APK 0.9.0 indir</a>
-          <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip">Portable indir</a>
+          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" data-download="windows">Windows MSI indir</a>
+          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" data-download="android">Android APK 0.9.0 indir</a>
+          <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" data-download="portable">Portable indir</a>
         </div>
       </div>
     </section>
@@ -402,6 +449,49 @@
         }
       }, { threshold: 0.14 });
       for (var j = 0; j < items.length; j++) observer.observe(items[j]);
+
+      var namespace = "altantivirus";
+      var counters = {
+        total: "downloads",
+        windows: "windows",
+        android: "android",
+        portable: "portable"
+      };
+      var ids = {
+        total: "countTotal",
+        windows: "countWindows",
+        android: "countAndroid",
+        portable: "countPortable"
+      };
+      function counterUrl(name, action) {
+        return "https://api.counterapi.dev/v1/" + namespace + "/" + name + "/" + (action || "");
+      }
+      function setCount(key, value) {
+        var node = document.getElementById(ids[key]);
+        if (node) node.textContent = typeof value === "number" ? value.toLocaleString("tr-TR") : value;
+      }
+      function loadCount(key) {
+        fetch(counterUrl(counters[key], ""), { cache: "no-store" })
+          .then(function (res) { return res.ok ? res.json() : { count: 0 }; })
+          .then(function (data) { setCount(key, data.count || 0); })
+          .catch(function () { setCount(key, "0"); });
+      }
+      function hitCounter(name) {
+        var img = new Image();
+        img.src = counterUrl(name, "up") + "?t=" + Date.now();
+      }
+      ["total", "windows", "android", "portable"].forEach(loadCount);
+      var links = document.querySelectorAll("[data-download]");
+      for (var k = 0; k < links.length; k++) {
+        links[k].addEventListener("click", function () {
+          var type = this.getAttribute("data-download");
+          hitCounter(counters.total);
+          if (counters[type]) hitCounter(counters[type]);
+          setTimeout(function () {
+            ["total", "windows", "android", "portable"].forEach(loadCount);
+          }, 900);
+        });
+      }
     })();
   </script>
 </body>
