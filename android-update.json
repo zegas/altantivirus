@@ -1,6 +1,6 @@
 {
-  "versionCode": 8,
-  "versionName": "0.8.0",
+  "versionCode": 9,
+  "versionName": "0.9.0",
   "apkUrl": "https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk",
-  "notes": "TARA butonu dokunma alani duzeltildi ve uygulama temasi Altantivirus mor/siyah renklerine tasindi."
+  "notes": "Ana ekran profesyonellestirildi. Durum seridi, son tarama bilgisi, islevli kutular ve daha tutarli mor tema eklendi."
 }
