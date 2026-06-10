@@ -67,10 +67,23 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(7,6,16,.98) 0%, rgba(7,6,16,.84) 42%, rgba(7,6,16,.48) 100%),
-        url("AltantivirusLogo.png") right center / min(760px, 76vw) auto no-repeat,
+        radial-gradient(circle at 82% 42%, rgba(139,92,246,.26), transparent 34%),
+        linear-gradient(90deg, rgba(7,6,16,.98) 0%, rgba(7,6,16,.86) 48%, rgba(7,6,16,.70) 100%),
         #080711;
       border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      right: max(40px, 8vw);
+      top: 50%;
+      width: min(460px, 40vw);
+      aspect-ratio: 1;
+      transform: translateY(-44%);
+      background: url("AltantivirusIcon.png") center / contain no-repeat;
+      opacity: .22;
+      filter: drop-shadow(0 0 58px rgba(139,92,246,.45));
+      pointer-events: none;
     }
     .hero:after {
       content: "";
@@ -281,9 +294,17 @@
       .hero {
         align-items: flex-end;
         background:
-          linear-gradient(0deg, rgba(7,6,16,.98) 0%, rgba(7,6,16,.75) 100%),
-          url("AltantivirusLogo.png") center 105px / min(520px, 92vw) auto no-repeat,
+          radial-gradient(circle at 50% 18%, rgba(139,92,246,.24), transparent 42%),
+          linear-gradient(0deg, rgba(7,6,16,.98) 0%, rgba(7,6,16,.82) 100%),
           #080711;
+      }
+      .hero:before {
+        left: 50%;
+        right: auto;
+        top: 185px;
+        width: min(260px, 58vw);
+        transform: translateX(-50%);
+        opacity: .20;
       }
       .hero-content { padding-top: 280px; }
       .platforms, .features, .trust-grid, .stats-grid, .download-panel { grid-template-columns: 1fr; }
