@@ -75,13 +75,13 @@
     .hero:before {
       content: "";
       position: absolute;
-      right: max(40px, 8vw);
-      top: 50%;
-      width: min(460px, 40vw);
+      left: max(270px, calc((100vw - 1180px) / 2 + 300px));
+      top: 58%;
+      width: min(560px, 52vw);
       aspect-ratio: 1;
-      transform: translateY(-44%);
+      transform: translate(-50%, -50%);
       background: url("AltantivirusIcon.png") center / contain no-repeat;
-      opacity: .22;
+      opacity: .16;
       filter: drop-shadow(0 0 58px rgba(139,92,246,.45));
       pointer-events: none;
     }
@@ -282,10 +282,10 @@
       .hero:before {
         left: 50%;
         right: auto;
-        top: 185px;
-        width: min(260px, 58vw);
-        transform: translateX(-50%);
-        opacity: .20;
+        top: 48%;
+        width: min(360px, 76vw);
+        transform: translate(-50%, -50%);
+        opacity: .14;
       }
       .hero-content { padding-top: 280px; }
       .platforms, .features, .trust-grid, .download-panel { grid-template-columns: 1fr; }
@@ -358,8 +358,8 @@
             <p>Sistem tepsisi modu, indirme kontrolu, karantina, Microsoft Defender destekli hizli/tam/ozel tarama ve guncelleme denetimi.</p>
           </div>
           <div class="platform-actions">
-            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" data-download="windows">Windows MSI indir</a>
-            <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" data-download="portable">Portable</a>
+            <a class="btn-primary" href="Altantivirus_Setup.msi" download data-download="windows">Windows MSI indir</a>
+            <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">Portable</a>
           </div>
         </article>
         <article class="platform-card">
@@ -372,7 +372,7 @@
             <p>Buyuk TARA butonu, durum seridi, son tarama bilgisi, islevli kutular, izin analizi ve uygulama ici guncelleme kontrolu.</p>
           </div>
           <div class="platform-actions">
-            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" data-download="android">Android APK indir</a>
+            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" download data-download="android">Android APK indir</a>
             <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/android-update.json">Surum bilgisi</a>
           </div>
         </article>
@@ -414,9 +414,9 @@
           <div class="note">Windows MSI standart kurulum dosyasidir. Android APK debug imzali gelistirme surumudur; yayin icin release imzasi onerilir.</div>
         </div>
         <div class="download-stack">
-          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" data-download="windows">Windows MSI indir</a>
-          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" data-download="android">Android APK 0.9.0 indir</a>
-          <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" data-download="portable">Portable indir</a>
+          <a class="btn-primary" href="Altantivirus_Setup.msi" download data-download="windows">Windows MSI indir</a>
+          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" download data-download="android">Android APK 0.9.0 indir</a>
+          <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">Portable indir</a>
         </div>
       </div>
     </section>
