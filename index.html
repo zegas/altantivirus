@@ -559,22 +559,22 @@
         <div>
           <h2>Altantivirus'u indir</h2>
           <p>En guncel Windows ve Android paketleri buradan indirilebilir. Android telefonda APK kurulumu icin bilinmeyen uygulama izni gerekebilir.</p>
-          <div class="note">Windows MSI standart kurulum dosyasidir. Android APK debug imzali gelistirme surumudur; yayin icin release imzasi onerilir.</div>
+          <div class="note">Windows MSI standart kurulum dosyasidir. Bilgisayariniz MSI veya EXE dosyalarini policy/Smart App Control ile blokluyorsa Portable ZIP surumunu indirin, ZIP dosyasina sag tiklayip Ozellikler > Engellemeyi kaldir secenegini isaretleyin ve klasore cikarin.</div>
         </div>
         <div class="download-stack">
+          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">Windows bloklarsa Portable indir</a>
           <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" download data-download="windows">Windows MSI indir</a>
           <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_User_Setup.msi" download data-download="windows">Admin istemeyen MSI</a>
           <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Direct_Setup.exe" download data-download="windows">Direct EXE kurulum</a>
           <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" download data-download="android">Android APK 1.0.0 indir</a>
-          <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">Portable indir</a>
         </div>
       </div>
       <div class="shell download-card-grid">
+        <div class="download-card"><b>Portable ZIP</b><span>MSI/EXE bloklanan bilgisayarlar icin kurulum gerektirmeyen en guvenli secenek.</span><a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">Portable indir</a></div>
         <div class="download-card"><b>Windows Installer</b><span>Normal kurulum, masaustu kisayolu ve baslat menusu deneyimi icin.</span><a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" download data-download="windows">MSI indir</a></div>
         <div class="download-card"><b>User Installer</b><span>Admin policy MSI kurulumunu engelliyorsa kullanici klasorune kurar.</span><a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_User_Setup.msi" download data-download="windows">User MSI indir</a></div>
         <div class="download-card"><b>Direct EXE Setup</b><span>Windows Installer kullanmaz; MSI policy hatasi alan bilgisayarlar icin.</span><a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Direct_Setup.exe" download data-download="windows">EXE indir</a></div>
         <div class="download-card"><b>Android APK</b><span>Telefon icin mobil koruma paneli ve uygulama izin denetimi.</span><a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" download data-download="android">APK indir</a></div>
-        <div class="download-card"><b>Portable</b><span>Kurulum yapmadan denemek isteyenler icin tasinabilir paket.</span><a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">ZIP indir</a></div>
       </div>
     </section>
 
@@ -587,7 +587,7 @@
         <div class="faq"><b>Bu ticari antiviruslerin aynisi mi?</b><span>Hayir. Altantivirus profesyonel gorunumlu yerel guvenlik paneli ve tarama aracidir. Tam ticari seviye icin kod imzalama, kernel surucusu, bulut imza agi ve bagimsiz testler gerekir.</span></div>
         <div class="faq"><b>Windows'ta gercekten tarama yapar mi?</b><span>Yerel dosya kurallarini uygular, kullanici klasorlerini tarar ve uygun yerlerde Microsoft Defender destekli kontrol akisini kullanir.</span></div>
         <div class="faq"><b>Android'de tum telefonu tarar mi?</b><span>Android izin modeli nedeniyle tum dosya sistemini sinirsiz tarayamaz; yuklu uygulama, hassas izin, yeni kurulum ve risk raporlamasina odaklanir.</span></div>
-        <div class="faq"><b>SmartScreen uyarisi neden cikabilir?</b><span>Yeni ve imzasiz uygulamalarda Windows uyarisi normaldir. Bunu azaltmak icin kod imzalama sertifikasi ve guvenilir yayin gecmisi gerekir.</span></div>
+        <div class="faq"><b>SmartScreen veya Block app neden cikabilir?</b><span>Yeni ve imzasiz MSI/EXE uygulamalarda Windows bunu engelleyebilir. MSI ve EXE bloklanan cihazlarda Portable ZIP kullanin. Kalici profesyonel cozum icin kod imzalama sertifikasi gerekir.</span></div>
       </div>
     </section>
 
