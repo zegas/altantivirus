@@ -1,5 +1,5 @@
 {
-  "version": "1.2.2",
+  "version": "1.3.0",
   "url": "https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi",
-  "notes": "Klasik Windows kurulum sihirbazi eklendi. Welcome, lisans, kurulum klasoru ve Finish ekranlariyla daha profesyonel kurulum deneyimi sunulur."
+  "notes": "Windows ana ekran 10x guclendirildi. 6 hizli guvenlik karti, daha net Defender durumu, karantina, surum denetimi ve profesyonel komuta merkezi akisi eklendi."
 }

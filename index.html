@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Altantivirus - Windows ve Android Security</title>
-  <meta name="description" content="Altantivirus, Windows ve Android icin modern arayuzlu guvenlik paneli ve tarama uygulamasidir.">
+  <title>Altantivirus - Windows ve Android Security Suite</title>
+  <meta name="description" content="Altantivirus, Windows ve Android icin modern arayuzlu guvenlik paneli, tarama merkezi, karantina, guncelleme denetimi ve mobil izin analizidir.">
   <link rel="icon" href="Altantivirus.ico">
   <style>
     * { box-sizing: border-box; }
@@ -168,6 +168,22 @@
       font-size: 13px;
       border: 1px solid rgba(255,255,255,.08);
     }
+    .hero-trust {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 28px;
+      max-width: 760px;
+    }
+    .hero-trust div {
+      min-height: 76px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.055);
+    }
+    .hero-trust b { display: block; margin-bottom: 5px; font-size: 18px; }
+    .hero-trust span { color: #cfc5e8; font-size: 12px; line-height: 1.45; }
     section { padding: 78px 0; }
     .section-head { max-width: 760px; margin-bottom: 28px; }
     .section-head h2 { margin: 0 0 10px; font-size: clamp(30px, 4vw, 44px); }
@@ -242,6 +258,88 @@
     .trust-card { padding: 20px; }
     .trust-card b { display: block; margin-bottom: 8px; font-size: 18px; }
     .trust-card span { color: #cfc5e8; line-height: 1.58; font-size: 14px; }
+    .showcase {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .screen {
+      position: relative;
+      overflow: hidden;
+      min-height: 430px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(circle at 78% 18%, rgba(185,132,255,.26), transparent 32%),
+        linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+      box-shadow: 0 24px 70px rgba(0,0,0,.25);
+      padding: 22px;
+    }
+    .screen.mobile { min-height: 430px; }
+    .screen-top { display: flex; align-items: center; justify-content: space-between; color: #d8d0ea; font-size: 13px; }
+    .screen-window {
+      margin-top: 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(8,7,17,.72);
+      min-height: 320px;
+      padding: 18px;
+    }
+    .screen-title { font-size: 28px; font-weight: 850; margin: 10px 0 12px; }
+    .screen-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .screen-card { min-height: 86px; border-radius: 8px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.10); padding: 13px; }
+    .screen-card b { display: block; font-size: 22px; margin-bottom: 6px; }
+    .screen-card span { color: #cfc5e8; font-size: 12px; }
+    .phone-frame {
+      width: min(270px, 100%);
+      min-height: 355px;
+      margin: 18px auto 0;
+      border-radius: 32px;
+      border: 8px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, #201735, #100b1d);
+      padding: 18px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+    }
+    .scan-orb {
+      width: 146px;
+      height: 146px;
+      margin: 22px auto 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #c184ff, #6733df);
+      box-shadow: 0 18px 48px rgba(139,92,246,.35);
+      font-weight: 900;
+    }
+    .release-list, .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+    .release, .faq {
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.055);
+    }
+    .release { display: grid; grid-template-columns: 130px 1fr; gap: 18px; }
+    .release time { color: #b984ff; font-weight: 850; }
+    .release b, .faq b { display: block; margin-bottom: 8px; font-size: 18px; }
+    .release span, .faq span { color: #cfc5e8; line-height: 1.58; font-size: 14px; }
+    .download-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .download-card {
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.055);
+      padding: 18px;
+    }
+    .download-card b { display: block; font-size: 18px; margin-bottom: 8px; }
+    .download-card span { display: block; min-height: 44px; color: #cfc5e8; font-size: 13px; line-height: 1.55; margin-bottom: 14px; }
     .download-band {
       border-top: 1px solid rgba(255,255,255,.08);
       border-bottom: 1px solid rgba(255,255,255,.08);
@@ -288,7 +386,7 @@
         opacity: .14;
       }
       .hero-content { padding-top: 280px; }
-      .platforms, .features, .trust-grid, .download-panel { grid-template-columns: 1fr; }
+      .platforms, .features, .trust-grid, .download-panel, .showcase, .hero-trust, .download-card-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .shell { width: min(100% - 26px, 1180px); }
@@ -315,7 +413,9 @@
         <nav class="nav-links">
           <a href="#platforms">Surumler</a>
           <a href="#features">Ozellikler</a>
+          <a href="#screens">Ekranlar</a>
           <a href="#trust">Guven</a>
+          <a href="#faq">SSS</a>
           <a class="nav-cta" href="#download">Indir</a>
         </nav>
       </div>
@@ -335,9 +435,14 @@
         </div>
         <div class="hero-meta">
           <span class="meta-pill">Windows 10/11</span>
-          <span class="meta-pill">Android APK 0.9.0</span>
+          <span class="meta-pill">Android APK 1.0.0</span>
           <span class="meta-pill">Turkce arayuz</span>
           <span class="meta-pill">Uygulama ici guncelleme</span>
+        </div>
+        <div class="hero-trust">
+          <div><b>1.2.2</b><span>Windows guvenlik paneli, karantina ve guncelleme denetimi.</span></div>
+          <div><b>0.9.0</b><span>Android mobil tarama, izin analizi ve uygulama denetimi.</span></div>
+          <div><b>Canli</b><span>Indirme sayaci ve GitHub uzerinden guncel paketler.</span></div>
         </div>
       </div>
     </main>
@@ -358,7 +463,7 @@
             <p>Sistem tepsisi modu, indirme kontrolu, karantina, Microsoft Defender destekli hizli/tam/ozel tarama ve guncelleme denetimi.</p>
           </div>
           <div class="platform-actions">
-            <a class="btn-primary" href="Altantivirus_Setup.msi" download data-download="windows">Windows MSI indir</a>
+            <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" download data-download="windows">Windows MSI indir</a>
             <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">Portable</a>
           </div>
         </article>
@@ -394,6 +499,37 @@
       </div>
     </section>
 
+    <section id="screens" class="shell reveal">
+      <div class="section-head">
+        <h2>Uygulama deneyimi</h2>
+        <p>Windows ve Android arayuzleri ayni marka hissini korur: tek bakista durum, tek dokunusla tarama, sade kartlar ve net raporlar.</p>
+      </div>
+      <div class="showcase">
+        <div class="screen">
+          <div class="screen-top"><span>Windows Desktop</span><span>Protection score 98</span></div>
+          <div class="screen-window">
+            <div class="eyebrow">Security Center</div>
+            <div class="screen-title">Sistem korunuyor</div>
+            <p class="lead" style="font-size:15px">Gercek zamanli denetim, indirme kontrolu, karantina ve Defender destekli tarama tek panelde.</p>
+            <div class="screen-row">
+              <div class="screen-card"><b>8/8</b><span>Aktif kalkan</span></div>
+              <div class="screen-card"><b>0</b><span>Son bulgu</span></div>
+              <div class="screen-card"><b>Hazir</b><span>Guncelleme</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="screen mobile">
+          <div class="screen-top"><span>Android Mobile</span><span>96%</span></div>
+          <div class="phone-frame">
+            <div class="screen-top"><span>Altantivirus</span><span>Mobile</span></div>
+            <div class="scan-orb">TARA</div>
+            <div class="screen-card"><b>Uygulama izleme</b><span>Hassas izinler ve yeni kurulumlar raporlanir.</span></div>
+            <div class="screen-card" style="margin-top:10px"><b>Wi-Fi kalkani</b><span>Ag guvenligi panelden izlenir.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="trust" class="shell reveal">
       <div class="section-head">
         <h2>Net ve durust guvenlik</h2>
@@ -406,6 +542,18 @@
       </div>
     </section>
 
+    <section id="versions" class="shell reveal">
+      <div class="section-head">
+        <h2>Surum notlari</h2>
+        <p>Yayinladigin paketlerde kullanicinin gordugu degisiklikler burada net sekilde tutulur.</p>
+      </div>
+      <div class="release-list">
+        <div class="release"><time>Windows 1.2.2</time><div><b>Kurulum ve panel guclendirildi</b><span>Klasik kurulum sihirbazi, sistem tepsisi modu, karantina, guncelleme denetimi ve daha dolu guvenlik merkezi.</span></div></div>
+        <div class="release"><time>Android 1.0.0</time><div><b>Mobil arayuz yenilendi</b><span>Buyuk TARA butonu, sol menu, uygulama/izin analizi, Wi-Fi kalkani ve uygulama ici guncelleme kontrolu.</span></div></div>
+        <div class="release"><time>Site</time><div><b>Indirme deneyimi modernlesti</b><span>Canli indirme sayaci, platform kartlari, guven aciklamalari, ekran onizlemeleri ve SSS bolumu eklendi.</span></div></div>
+      </div>
+    </section>
+
     <section id="download" class="download-band reveal">
       <div class="shell download-panel">
         <div>
@@ -414,10 +562,28 @@
           <div class="note">Windows MSI standart kurulum dosyasidir. Android APK debug imzali gelistirme surumudur; yayin icin release imzasi onerilir.</div>
         </div>
         <div class="download-stack">
-          <a class="btn-primary" href="Altantivirus_Setup.msi" download data-download="windows">Windows MSI indir</a>
-          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" download data-download="android">Android APK 0.9.0 indir</a>
+          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" download data-download="windows">Windows MSI indir</a>
+          <a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" download data-download="android">Android APK 1.0.0 indir</a>
           <a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">Portable indir</a>
         </div>
+      </div>
+      <div class="shell download-card-grid">
+        <div class="download-card"><b>Windows Installer</b><span>Normal kurulum, masaustu kisayolu ve baslat menusu deneyimi icin.</span><a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Setup.msi" download data-download="windows">MSI indir</a></div>
+        <div class="download-card"><b>Android APK</b><span>Telefon icin mobil koruma paneli ve uygulama izin denetimi.</span><a class="btn-primary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk" download data-download="android">APK indir</a></div>
+        <div class="download-card"><b>Portable</b><span>Kurulum yapmadan denemek isteyenler icin tasinabilir paket.</span><a class="btn-secondary" href="https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Portable.zip" download data-download="portable">ZIP indir</a></div>
+      </div>
+    </section>
+
+    <section id="faq" class="shell reveal">
+      <div class="section-head">
+        <h2>Sik sorulanlar</h2>
+        <p>Kullanicinin kurulumdan once aklina gelecek temel sorulari netlestirir.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq"><b>Bu ticari antiviruslerin aynisi mi?</b><span>Hayir. Altantivirus profesyonel gorunumlu yerel guvenlik paneli ve tarama aracidir. Tam ticari seviye icin kod imzalama, kernel surucusu, bulut imza agi ve bagimsiz testler gerekir.</span></div>
+        <div class="faq"><b>Windows'ta gercekten tarama yapar mi?</b><span>Yerel dosya kurallarini uygular, kullanici klasorlerini tarar ve uygun yerlerde Microsoft Defender destekli kontrol akisini kullanir.</span></div>
+        <div class="faq"><b>Android'de tum telefonu tarar mi?</b><span>Android izin modeli nedeniyle tum dosya sistemini sinirsiz tarayamaz; yuklu uygulama, hassas izin, yeni kurulum ve risk raporlamasina odaklanir.</span></div>
+        <div class="faq"><b>SmartScreen uyarisi neden cikabilir?</b><span>Yeni ve imzasiz uygulamalarda Windows uyarisi normaldir. Bunu azaltmak icin kod imzalama sertifikasi ve guvenilir yayin gecmisi gerekir.</span></div>
       </div>
     </section>
 
@@ -488,4 +654,5 @@
   </script>
 </body>
 </html>
+
 

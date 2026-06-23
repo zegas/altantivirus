@@ -1,6 +1,6 @@
 {
-  "versionCode": 9,
-  "versionName": "0.9.0",
+  "versionCode": 10,
+  "versionName": "1.0.0",
   "apkUrl": "https://raw.githubusercontent.com/zegas/altantivirus/main/Altantivirus_Android_Debug.apk",
-  "notes": "Ana ekran profesyonellestirildi. Durum seridi, son tarama bilgisi, islevli kutular ve daha tutarli mor tema eklendi."
+  "notes": "Mobil guvenlik merkezi 10x guclendirildi. Ana ekrana izin denetimi ve kalkan kutulari eklendi, koruma ozeti genisletildi, tarama raporlari ve guncelleme akisi iyilestirildi."
 }
